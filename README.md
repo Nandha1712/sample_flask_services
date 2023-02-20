@@ -22,3 +22,9 @@
 * Create required load balancer and other related things.
 
 * Finally make changes and run the ingress.yaml file
+
+
+
+Health Checks
+
+ [Google cloud health check](https://cloud.google.com/load-balancing/docs/health-check-concepts?authuser=1#example "Google cloud health check") 
