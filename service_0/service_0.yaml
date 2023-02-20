@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: console0-qualdo
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         image: tag_to_be_added
 
 ---

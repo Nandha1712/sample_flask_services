@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: check-ingress
+  namespace: qualdo
+  annotations:
+    kubernetes.io/ingress.class: "gce"
+    kubernetes.io/ingress.global-static-ip-name: "test-subscriptions"
+    networking.gke.io/managed-certificates: "qualdo-sm--devcentralops"
+#    ingress.kubernetes.io/enable-cors: "true"
+    # controls whether the ingress is modified ‘in-place’,
+    # or a new one is created specifically for the HTTP01 challenge.
+    cert-manager.io/issue-temporary-certificate: "true"
+    acme.cert-manager.io/http01-edit-in-place: "true"
+
+spec:
+  rules:
+  - host: 'test-subscriptions.gcp-qualdo.ai'
+    http:
+      paths:
+        - path: /c1/*
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: console1-service
+              port:
+                number: 3001
+        - path: /c2/*
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: console2-service
+              port:
+                number: 3002
+        - path: /*
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: console0-service
+              port:
+                number: 80
+    
