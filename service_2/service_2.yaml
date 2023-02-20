@@ -1,0 +1,44 @@
+#######
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-2
+  namespace: qualdo
+  labels:
+    app: console-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: console-2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: console-2
+    spec:
+      containers:
+      - name: console2-qualdo
+        imagePullPolicy: IfNotPresent
+        image: tag_to_be_added
+
+---
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: console2-service
+  namespace: qualdo
+spec:
+  selector:
+    app: console-2
+  ports:
+    - protocol: TCP
+      port: 3002
+      targetPort: 3002
+  type: ClusterIP
