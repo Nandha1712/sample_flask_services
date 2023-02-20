@@ -7,19 +7,19 @@ app = Flask(app_name)
 
 @app.route('/', methods=['GET'])
 def api0():
-    data = {"code": 200, "source": "api1", "message": "This service 1"}
+    data = {"code": 200, "source": "api1", "message": "This service 0"}
     return jsonify(data)
 
 
-@app.route('/api1', methods=['GET'])
+@app.route('/api01', methods=['GET'])
 def api1():
-    data = {"code": 200, "source": "api1"}
+    data = {"code": 200, "source": "api1", "message": "This service 0"}
     return jsonify(data)
 
 
-@app.route('/api2', methods=['GET'])
+@app.route('/api02', methods=['GET'])
 def api2():
-    data = {"code": 200, "source": "api2"}
+    data = {"code": 200, "source": "api2", "message": "This service 0"}
     return jsonify(data)
 
 if __name__ == "__main__":
