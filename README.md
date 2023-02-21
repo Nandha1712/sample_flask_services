@@ -1,5 +1,16 @@
 # sample_flask_services
 
+* Comment or uncomment blueprint prefix based on requirement.
+
+     File ```service_1/run_server.py```
+     
+     ```app.register_blueprint(app_api,url_prefix="/c1")```
+
+     File ```service_2/run_server.py```
+     
+     ```app.register_blueprint(app_api,url_prefix="/c2")```
+     
+
 * Do docker build from root directory itself
 
  ```sudo docker build -t service_0:latest -f service_0/Dockerfile .```
