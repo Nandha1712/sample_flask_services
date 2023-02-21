@@ -18,22 +18,22 @@ spec:
   - host: 'test-subscriptions.gcp-qualdo.ai'
     http:
       paths:
-        - path: /c1/*
-          pathType: ImplementationSpecific
+        - path: /c1
+          pathType: Prefix
           backend:
             service:
               name: console1-service
               port:
                 number: 3001
-        - path: /c2/*
-          pathType: ImplementationSpecific
+        - path: /c2
+          pathType: Prefix
           backend:
             service:
               name: console2-service
               port:
                 number: 3002
-        - path: /*
-          pathType: ImplementationSpecific
+        - path: /
+          pathType: Prefix
           backend:
             service:
               name: console0-service
